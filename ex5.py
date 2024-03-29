@@ -66,29 +66,16 @@ def loadEncryptionSystem(dir_path, plaintext_suffix):
     else:
         cipher = VigenereCipher(config['key'])
 
+    org_suffix, new_suffix = (plaintext_suffix, 'enc') if config['encrypt'] == 'True' else ('enc', plaintext_suffix)
+
     for file_path in files:
-        if config['encrypt'] == 'True':
-            if not file_path.endswith(plaintext_suffix):
-                continue
-            with open(file_path, 'r') as file:
-                message = cipher.encrypt(file.read())
-            new_file_path = os.path.splitext(file_path)[0] + '.enc'
-            with open(new_file_path, 'w') as file:
-                file.write(message)
-        else:
-            if not file_path.endswith('enc'):
-                continue
-            with open(file_path, 'r') as file:
-                message = cipher.decrypt(file.read())
-            new_file_path = os.path.splitext(file_path)[0] + '.' + plaintext_suffix
-            with open(new_file_path, 'w') as file:
-                file.write(message)
-
-if __name__ == '__main__':
-    loadEncryptionSystem('.', 'my')
-
-                
+        if not file_path.endswith(org_suffix):
+            continue
+        with open(file_path, 'r') as file:
+            message = cipher.encrypt(file.read()) if config['encrypt'] == 'True' else cipher.decrypt(file.read())
+        new_file_path = os.path.splitext(file_path)[0] + '.' + new_suffix
+        with open(new_file_path, 'w') as file:
+            file.write(message)
 
 
-    
-
+     
