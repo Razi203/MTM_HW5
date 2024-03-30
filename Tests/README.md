@@ -10,6 +10,8 @@ Good Luck!
 ## steps:
 1. Move/Copy your 'ex5.py' to inside of this folder (Tests) 
 
+    ***MAKE SURE TO BE IN THE TESTS DIRCTORY FOR THE FOLLOWING STEPS!!!***
+
 2. Run [testRun.py](testRun.py) using your IDE or using ```python3 testRun.py```
 
 3. You'll get a summary in the console and an 'output.txt' file with details in mere seconds :)
