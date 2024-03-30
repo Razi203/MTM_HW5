@@ -19,18 +19,18 @@ def main():
     #     json.dump(dict_v_enc, f, indent=4)
 
     # loadEncryptionSystem('vigenere_encrypted', 'out')
-    values = [-18,9,-8,20]
-    for i in range(1,5):
-        dict_c = {"type": "Caesar",
-        "encrypt": "True",
-        "key": values[i-1]}
-        with open(os.path.join('caesar', 'config.json'), 'w') as f:
-            json.dump(dict_c, f, indent=4)
-        loadEncryptionSystem('caesar', 'c' + str(i))
+    # values = [-18,9,-8,20]
+    # for i in range(1,5):
+    #     dict_c = {"type": "Caesar",
+    #     "encrypt": "True",
+    #     "key": values[i-1]}
+    #     with open(os.path.join('caesar', 'config.json'), 'w') as f:
+    #         json.dump(dict_c, f, indent=4)
+    #     loadEncryptionSystem('caesar', 'c' + str(i))
 
 
     values = [-2,3,0]
-    for i in range(1,3):
+    for i in range(3,4):
         dict_c = {"type": "Caesar",
         "encrypt": "False",
         "key": values[i-1]}
