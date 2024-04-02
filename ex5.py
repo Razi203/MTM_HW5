@@ -1,6 +1,7 @@
 import os
 import json
 
+
 class Cipher():
     def encrypt(self, string):
         return self.modify_string(string, 1)
@@ -11,18 +12,18 @@ class Cipher():
     def modify_letter(self, letter, key):
         if not letter.isalpha(): 
             return letter
+        letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         if letter.islower():
-            start = ord('a')
-        else:
-            start = ord('A')
-        new = (ord(letter) - start + key) % (ord('z') - ord('a') + 1)
-        return chr(start + new)
+            letters = letters.lower()
+        index = letters.find(letter)
+        new_index = (index + key) % len(letters) 
+        return letters[new_index]
     
     def modify_string(self, string, modifier):
         return "".join([self.modify_letter(c, modifier*self.get_key()) if c.isalpha() else c for c in string])
     
     def get_key(self):
-        return 0
+        raise("Abstract base class should not be used!")
 
 
 class CaesarCipher(Cipher):
