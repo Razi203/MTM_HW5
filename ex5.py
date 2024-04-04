@@ -20,7 +20,10 @@ class Cipher():
         return letters[new_index]
     
     def modify_string(self, string, modifier):
-        return "".join([self.modify_letter(c, modifier*self.get_key()) if c.isalpha() else c for c in string])
+        modified = ""
+        for c in string:
+            modified += self.modify_letter(c, modifier*self.get_key()) if c.isalpha() else c
+        return modified
     
     def get_key(self):
         raise("Abstract base class should not be used!")

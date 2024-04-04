@@ -21,14 +21,14 @@ def test5():
     if vigenere.decrypt('Igopj Xqupy!')!='Hello World!':
         return False
     return True 
-def test8():
+def test6():
     loadEncryptionSystem('.', 'txt')
     with open('plain.enc', 'r') as out:
         with open('plain.out', 'r') as expected:
             if out.read() != expected.read():
                 return False
     return True 
-def test9():
+def test7():
     caesar = CaesarCipher(1)
     caesar.key_shift(2)
     return 'd' == caesar.encrypt('a')
